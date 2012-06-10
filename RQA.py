@@ -278,8 +278,8 @@ def random_monster(x,y):
         level += random.randint(1,dungeon_level)
     else:
         adjective = None
-    strength = int(round(level * (random.random()+1.0) * 10))
-    agility = int(round(level * (random.random()+1.0) * 10))
+    strength = int(round(level * (random.random()+1.0)))
+    agility = int(round(level * (random.random()+1.0)))
     health = int(round(level * (random.random()+1.0)))
     hue = lists.monster_colors[name]
     color = libtcod.Color(0,0,0)
