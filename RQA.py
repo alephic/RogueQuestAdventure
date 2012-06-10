@@ -173,6 +173,7 @@ class Weapon:
     def use(self):
         player.weapon = self
         announce('You are now wielding the '+self.full_name()+'.')
+        return False
 
     def full_name(self):
         fullname = self.name
@@ -271,14 +272,14 @@ items = []
 
 def random_monster(x,y):
     name = random.choice(lists.monster_names)
-    level = dungeon_level
-    if random.randint(0,1) == 1:
+    level = random.randint(1, dungeon_level)
+    if random.randint(0,2) == 1:
         adjective = random.choice(lists.monster_attributes)
         level += random.randint(1,dungeon_level)
     else:
         adjective = None
-    strength = int(round(level * (random.random()+1.0)))
-    agility = int(round(level * (random.random()+1.0)))
+    strength = int(round(level * (random.random()+1.0) * 10))
+    agility = int(round(level * (random.random()+1.0) * 10))
     health = int(round(level * (random.random()+1.0)))
     hue = lists.monster_colors[name]
     color = libtcod.Color(0,0,0)
@@ -289,7 +290,7 @@ def random_monster(x,y):
 
 def random_weapon():
     name = random.choice(lists.weapon_names)
-    power = int(round(dungeon_level*(random.random() + 1)))
+    power = random.randint(1, dungeon_level)
     bonus = 0
     if random.randint(0,1) == 1:
         attribute = random.choice(lists.weapon_traits)
@@ -345,6 +346,7 @@ class Food:
         max_healed = player.max_health - player.health
         player.health = min(player.health + self.value, player.max_health)
         announce('You ate the '+self.name+'! Health restored by '+str(min(self.value, max_healed))+' points.')
+        return True
 
     def full_name(self):
         return self.name
@@ -575,7 +577,10 @@ def render_inventory():
             libtcod.console_set_foreground_color(inv_con, libtcod.Color(128,128,128))
             libtcod.console_put_char(inv_con, 2, y, '-', libtcod.BKGND_NONE)
         name = inventory[item_index].name
-        y += libtcod.console_print_left_rect(inv_con, 3, y, INVENTORY_WIDTH-4, 0, libtcod.BKGND_NONE, name)
+        sprite = inventory[item_index].sprite
+        libtcod.console_put_char(inv_con, 3, y, sprite.char, libtcod.BKGND_NONE)
+        
+        y += libtcod.console_print_left_rect(inv_con, 5, y, INVENTORY_WIDTH-4, 0, libtcod.BKGND_NONE, name)
 
 def handle_keys():
     global took_turn
@@ -613,6 +618,9 @@ def handle_keys():
             player_motion = [1,1]
             took_turn = True
 
+        elif key.vk == libtcod.KEY_KP5:
+            took_turn = True
+
         elif key.vk == libtcod.KEY_CHAR and key.c == ord('i'):
             inv_open = True
 
@@ -624,7 +632,7 @@ def handle_keys():
         if key.vk == libtcod.KEY_CHAR and key.c == ord('i'):
             inv_open = False
         elif key.vk == libtcod.KEY_CHAR and key.c == ord('e') and not inventory == []:
-            inventory[inv_select].content.use()
+            took_turn = inventory[inv_select].content.use()
         elif key.vk == libtcod.KEY_CHAR and key.c == ord('d') and not inventory == []:
             inventory[inv_select].drop()
         elif key.vk == libtcod.KEY_UP:
