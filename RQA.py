@@ -241,7 +241,7 @@ class Creature:
         if evade_roll > 100:
             announce(victim.full_name().capitalize()+' dodged the '+self.full_name()+'\'s attack!', color = victim.sprite.color)
         else:
-            damage = int(math.ceil(float(self.strength)/10.0 * self.weapon.power + self.weapon.bonus))
+            damage = int(math.ceil(float(self.strength+self.weapon.power)/10.0 * self.weapon.power))
             victim.health -= damage
             victim.health = max(victim.health, 0)
             if self == player:
