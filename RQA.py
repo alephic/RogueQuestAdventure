@@ -19,7 +19,7 @@ SCREEN_HEIGHT = MAP_HEIGHT + PANEL_HEIGHT
 ROOM_MAX_SIZE = 15
 ROOM_MIN_SIZE = 5
 
-MAX_ROOMS = 15
+MAX_ROOMS = 1
 
 MAX_ROOM_GOODIES = 5
 
@@ -426,7 +426,7 @@ def gen_map():
     rooms = []
     num_rooms = 0
 
-    for r in range(MAX_ROOMS):
+    for r in range(dungeon_level+1):
         w = random.randint(ROOM_MIN_SIZE, ROOM_MAX_SIZE)
         h = random.randint(ROOM_MIN_SIZE, ROOM_MAX_SIZE)
         x = random.randint(1, MAP_WIDTH - w - 2)

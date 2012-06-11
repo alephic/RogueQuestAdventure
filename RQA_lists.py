@@ -105,7 +105,9 @@ weapon_traits = ['giant',
                  'dark',
                  'gnarly',
                  'awesome',
-                 'radical'
+                 'radical',
+                 'slender',
+                 'multidimensional'
                  ]
 weapon_enchantments = ['crushing',
                        'unholiness',
@@ -181,7 +183,10 @@ weapon_enchantments = ['crushing',
                        'destruction',
                        'aromatherapy',
                        'torment',
-                       'angst'
+                       'angst',
+                       'justice',
+                       'your father',
+                       'divine punishment'
                        ]
 attacks = ['bludgeon',
            'stab',
@@ -207,7 +212,8 @@ attacks = ['bludgeon',
            'wallop',
            'pound',
            'lambast',
-           'assault'
+           'assault',
+           'bonk'
            ]
 monster_names = ['alligator',
                  'crocodile',
@@ -225,12 +231,13 @@ monster_names = ['alligator',
                  'land shark',
                  'drop-bear',
                  'tree octopus',
+                 'squid',
+                 'basilisk',
                  'dragon',
                  'harpie',
                  'succubus',
                  'gorgon',
                  'hydra',
-                 'zombie',
                  'slime',
                  'pegasus',
                  'unicorn',
@@ -242,6 +249,7 @@ monster_names = ['alligator',
                  'spider',
                  'bat',
                  'moth',
+                 'pony',
                  'crab',
                  'rabbit',
                  'hobgoblin',
@@ -274,7 +282,12 @@ monster_names = ['alligator',
                  'jellyfish',
                  'pirahna',
                  'energy ball',
-                 'beetle'
+                 'beetle',
+                 'wombat',
+                 'sloth',
+                 'penguin',
+                 'horror',
+                 'abomination'
                  ]
 monster_colors = dict()
 for monster in monster_names:
@@ -306,8 +319,30 @@ monster_attributes = ['skeletal',
                       'slow',
                       'magic',
                       'floating',
-                      'ghostly'
+                      'ghostly',
+                      'undead',
+                      'dyslexic',
+                      'abominable',
+                      'ethereal',
+                      'multidimensional',
+                      'beastly'
                       ]
+boss_titles = ['king',
+               'overlord',
+               'master',
+               'champion',
+               'wizard',
+               'conqueror',
+               'god',
+               'president',
+               'sorceror',
+               'knight',
+               'general',
+               'warlord',
+               'goddess',
+               'queen',
+               'dictator'
+               ]
 food_names = ['banana',
               'cheese slice',
               'bacon strip',
@@ -372,5 +407,9 @@ food_names = ['banana',
               'strip of beef jerky',
               'bottle of ketchup',
               'cupcake',
-              'muffin'
+              'muffin',
+              'creme brulee',
+              'perogi',
+              'apple fritter',
+              'lollipop'
               ]
